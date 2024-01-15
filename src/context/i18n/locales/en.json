@@ -5,6 +5,8 @@
     "titleCaption": "Log in to continue"
   },
   "register": {
-    "title": "Sign up"
+    "title": "Sign up",
+    "titleContent": "Create an account",
+    "titleCaption": "Add your personal details below"
   }
 }

@@ -2,6 +2,7 @@ const color = {
   primary: '#3629B7',
   secondary: '#F2F1F9',
   white: '#FFF',
+  neutral: '#343434',
 };
 
 const font = {
