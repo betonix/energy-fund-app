@@ -1,0 +1,10 @@
+{
+  "login": {
+    "title": "Log in",
+    "titleContent": "Welcome Back",
+    "titleCaption": "Log in to continue"
+  },
+  "register": {
+    "title": "Sign up"
+  }
+}

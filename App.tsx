@@ -5,6 +5,8 @@ import AuthProvider from './src/context/auth-provider/auth-provider';
 import {ThemeProvider} from 'styled-components/native';
 import theme from './src/styles/theme';
 
+import './src/context/i18n';
+
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
