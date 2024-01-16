@@ -3,6 +3,7 @@ import {
   Container,
   ContentPage,
   ContenteForm,
+  KeyboardView,
   TitleCaption,
   TitleContent,
   TitlePage,
@@ -15,6 +16,7 @@ import Button from '../../components/button/button';
 import styled from 'styled-components/native';
 import {useNavigation} from '@react-navigation/native';
 import {SCREENS} from '../../navitagion/screens-names';
+import {Keyboard, TouchableWithoutFeedback} from 'react-native';
 
 const ContainerLogo = styled.View`
   margin-bottom: 40px;
@@ -49,49 +51,53 @@ const Login: React.FC = () => {
   const [passwordValue, setPasswordValue] = useState('');
 
   return (
-    <Container>
-      <TitlePage>{t('login.title')}</TitlePage>
-      <ContentPage>
-        <TitleContent>{t('login.titleContent')}</TitleContent>
-        <TitleCaption>{t('login.titleCaption')}</TitleCaption>
-        <ContenteForm>
-          <ContainerLogo>
-            <Icon name="Illustration" width={150} height={150}></Icon>
-          </ContainerLogo>
+    <KeyboardView behavior="padding">
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <Container>
+          <TitlePage>{t('login.title')}</TitlePage>
+          <ContentPage>
+            <TitleContent>{t('login.titleContent')}</TitleContent>
+            <TitleCaption>{t('login.titleCaption')}</TitleCaption>
+            <ContenteForm>
+              <ContainerLogo>
+                <Icon name="Illustration" width={150} height={150}></Icon>
+              </ContainerLogo>
 
-          <Input
-            label={t('login.email')}
-            onChangeText={text => setEmailValue(text)}
-            placeholder={t('login.email')}
-          />
+              <Input
+                label={t('login.email')}
+                onChangeText={text => setEmailValue(text)}
+                placeholder={t('login.email')}
+              />
 
-          <Input
-            label={t('login.password')}
-            type="password"
-            capitonPassword={t('login.forgot')}
-            onChangeText={text => setPasswordValue(text)}
-            placeholder={t('login.password')}
-          />
+              <Input
+                label={t('login.password')}
+                type="password"
+                capitonPassword={t('login.forgot')}
+                onChangeText={text => setPasswordValue(text)}
+                placeholder={t('login.password')}
+              />
 
-          <ButtonContainer>
-            <Button
-              title={t('login.loginButton')}
-              disabled={!emailValue || !passwordValue}
-              onPress={() => {}}
-            />
-          </ButtonContainer>
+              <ButtonContainer>
+                <Button
+                  title={t('login.loginButton')}
+                  disabled={!emailValue || !passwordValue}
+                  onPress={() => {}}
+                />
+              </ButtonContainer>
 
-          <Link onPress={() => navigation.navigate(SCREENS.REGISTER)}>
-            <CreateAccountText>
-              {t('login.createAccount')}
-              <CreateAccountLink>
-                {t('login.createAccountLink')}
-              </CreateAccountLink>
-            </CreateAccountText>
-          </Link>
-        </ContenteForm>
-      </ContentPage>
-    </Container>
+              <Link onPress={() => navigation.navigate(SCREENS.REGISTER)}>
+                <CreateAccountText>
+                  {t('login.createAccount')}
+                  <CreateAccountLink>
+                    {t('login.createAccountLink')}
+                  </CreateAccountLink>
+                </CreateAccountText>
+              </Link>
+            </ContenteForm>
+          </ContentPage>
+        </Container>
+      </TouchableWithoutFeedback>
+    </KeyboardView>
   );
 };
 

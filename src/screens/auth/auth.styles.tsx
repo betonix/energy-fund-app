@@ -49,3 +49,7 @@ export const ContenteForm = styled.View`
   padding-top: 47px;
   width: 100%;
 `;
+
+export const KeyboardView = styled.KeyboardAvoidingView`
+  flex: 1;
+`;

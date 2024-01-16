@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {
   Container,
   ContentPage,
+  KeyboardView,
   TitleCaption,
   TitleContent,
   TitlePage,
@@ -14,6 +15,7 @@ import styled from 'styled-components/native';
 import Button from '../../components/button/button';
 import {useNavigation} from '@react-navigation/native';
 import {SCREENS} from '../../navitagion/screens-names';
+import {Keyboard, TouchableWithoutFeedback} from 'react-native';
 
 const ContentForm = styled.View`
   padding-top: 32px;
@@ -80,64 +82,70 @@ const Register: React.FC = () => {
   );
 
   return (
-    <Container>
-      <TitlePage>{t('register.title')}</TitlePage>
-      <ContentPage>
-        <TitleContent>{t('register.titleContent')}</TitleContent>
-        <TitleCaption>{t('register.titleCaption')}</TitleCaption>
-        <ContentForm>
-          <Input
-            label={t('register.firstName')}
-            onChangeText={text => setUser({...user, firstName: text})}
-            placeholder={t('register.firstName')}
-          />
+    <KeyboardView behavior="padding">
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <Container>
+          <TitlePage>{t('register.title')}</TitlePage>
+          <ContentPage>
+            <TitleContent>{t('register.titleContent')}</TitleContent>
+            <TitleCaption>{t('register.titleCaption')}</TitleCaption>
+            <ContentForm>
+              <Input
+                label={t('register.firstName')}
+                onChangeText={text => setUser({...user, firstName: text})}
+                placeholder={t('register.firstName')}
+              />
 
-          <Input
-            label={t('register.lastName')}
-            onChangeText={text => setUser({...user, lastName: text})}
-            placeholder={t('register.lastName')}
-          />
+              <Input
+                label={t('register.lastName')}
+                onChangeText={text => setUser({...user, lastName: text})}
+                placeholder={t('register.lastName')}
+              />
 
-          <Input
-            label={t('register.email')}
-            onChangeText={text => setUser({...user, email: text})}
-            placeholder={t('register.email')}
-          />
+              <Input
+                label={t('register.email')}
+                onChangeText={text => setUser({...user, email: text})}
+                placeholder={t('register.email')}
+              />
 
-          <Input
-            label={t('register.password')}
-            type="password"
-            onChangeText={text => setUser({...user, password: text})}
-            placeholder={t('register.passwordPlaceholder')}
-          />
-          <Checkbox
-            isSelected={acceptedTerms}
-            onPress={() => setAcceptedTerms(prev => !prev)}
-            text={TextLink}
-          />
+              <Input
+                label={t('register.password')}
+                type="password"
+                onChangeText={text => setUser({...user, password: text})}
+                placeholder={t('register.passwordPlaceholder')}
+              />
+              <Checkbox
+                isSelected={acceptedTerms}
+                onPress={() => setAcceptedTerms(prev => !prev)}
+                text={TextLink}
+              />
 
-          <ButtonContainer>
-            <Button
-              title={t('register.registerButton')}
-              disabled={
-                !user.firstName ||
-                !user.lastName ||
-                !user.email ||
-                !user.password ||
-                !acceptedTerms
-              }
-              onPress={() => {}}
-            />
-          </ButtonContainer>
-        </ContentForm>
-        <Link onPress={() => navigation.navigate(SCREENS.LOGIN)}>
-          <CreateAccountText>
-            {t('register.backLogin')}
-            <CreateAccountLink>{t('register.backLoginLink')}</CreateAccountLink>
-          </CreateAccountText>
-        </Link>
-      </ContentPage>
-    </Container>
+              <ButtonContainer>
+                <Button
+                  title={t('register.registerButton')}
+                  disabled={
+                    !user.firstName ||
+                    !user.lastName ||
+                    !user.email ||
+                    !user.password ||
+                    !acceptedTerms
+                  }
+                  onPress={() => {}}
+                />
+              </ButtonContainer>
+            </ContentForm>
+            <Link onPress={() => navigation.navigate(SCREENS.LOGIN)}>
+              <CreateAccountText>
+                {t('register.backLogin')}
+                <CreateAccountLink>
+                  {t('register.backLoginLink')}
+                </CreateAccountLink>
+              </CreateAccountText>
+            </Link>
+          </ContentPage>
+        </Container>
+      </TouchableWithoutFeedback>
+    </KeyboardView>
   );
 };
 
