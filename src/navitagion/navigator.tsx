@@ -27,8 +27,8 @@ const Navigator: React.FC = () => {
             </>
           ) : (
             <>
-              <Stack.Screen name={SCREENS.REGISTER} component={Register} />
               <Stack.Screen name={SCREENS.LOGIN} component={Login} />
+              <Stack.Screen name={SCREENS.REGISTER} component={Register} />
             </>
           )}
         </>

@@ -43,3 +43,9 @@ export const TitleCaption = styled.Text`
   font-weight: 500;
   line-height: 16px;
 `;
+
+export const ContenteForm = styled.View`
+  align-items: center;
+  padding-top: 47px;
+  width: 100%;
+`;

@@ -1,9 +1,14 @@
 {
   "login": {
     "title": "Log in",
+    "email": "Email",
+    "password": "Password",
     "titleContent": "Welcome Back",
     "titleCaption": "Log in to continue",
-    "forgot": "Forgot your password ?"
+    "forgot": "Forgot your password ?",
+    "createAccount": "Don't have an account? ",
+    "createAccountLink": "Sign Up ",
+    "loginButton": "Log in"
   },
   "register": {
     "title": "Sign up",

@@ -13,6 +13,7 @@ interface CustomInputProps {
 
 const Container = styled.View`
   position: relative;
+  margin-bottom: 24px;
 `;
 
 const IconStyled = styled.TouchableOpacity`
@@ -64,6 +65,7 @@ const Input: React.FC<CustomInputProps> = ({
   capitonPassword,
 }) => {
   const [inputValue, setInputValue] = useState<string>('');
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleInputChange = (text: string) => {
     setInputValue(text);
@@ -74,18 +76,21 @@ const Input: React.FC<CustomInputProps> = ({
     <Container>
       <Label>{label}</Label>
       <StyledInput
+        secureTextEntry={type == 'password' && !showPassword}
         placeholder={placeholder}
         value={inputValue}
         onChangeText={handleInputChange}
       />
-      {type === 'password' && (
-        <IconStyled>
-          <Icon name="Eyes" width={20} height={20} />
-        </IconStyled>
+      {type == 'password' && (
+        <>
+          <IconStyled onPress={() => setShowPassword(prev => !prev)}>
+            <Icon name="Eyes" width={20} height={20} />
+          </IconStyled>
+          <TouchableOpacity>
+            <CaptionPassword>{capitonPassword}</CaptionPassword>
+          </TouchableOpacity>
+        </>
       )}
-      <TouchableOpacity>
-        <CaptionPassword>{capitonPassword}</CaptionPassword>
-      </TouchableOpacity>
     </Container>
   );
 };
