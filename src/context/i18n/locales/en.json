@@ -2,7 +2,8 @@
   "login": {
     "title": "Log in",
     "titleContent": "Welcome Back",
-    "titleCaption": "Log in to continue"
+    "titleCaption": "Log in to continue",
+    "forgot": "Forgot your password ?"
   },
   "register": {
     "title": "Sign up",
