@@ -16,6 +16,7 @@ import Button from '../../components/button/button';
 import {useNavigation} from '@react-navigation/native';
 import {SCREENS} from '../../navitagion/screens-names';
 import {Keyboard, TouchableWithoutFeedback} from 'react-native';
+import {useAuth} from '../../hooks/use-auth/use-auth';
 
 const ContentForm = styled.View`
   padding-top: 32px;
@@ -62,6 +63,8 @@ const CreateAccountLink = styled.Text`
 
 const Register: React.FC = () => {
   const {t} = useTranslation();
+
+  const {loginUser, register} = useAuth();
 
   const navigation = useNavigation<any>();
 
@@ -130,7 +133,7 @@ const Register: React.FC = () => {
                     !user.password ||
                     !acceptedTerms
                   }
-                  onPress={() => {}}
+                  onPress={() => register(user)}
                 />
               </ButtonContainer>
             </ContentForm>

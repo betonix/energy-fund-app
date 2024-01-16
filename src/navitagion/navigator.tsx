@@ -3,8 +3,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {SCREENS} from './screens-names';
 import Login from '../screens/auth/login';
 import Register from '../screens/auth/register';
-import Home from '../screens/home';
-import Transfer from '../screens/transfer';
+import Home from '../screens/home/home';
+import Transfer from '../screens/home/transfer';
 import {useAuth} from '../hooks/use-auth/use-auth';
 import theme from '../styles/theme';
 
