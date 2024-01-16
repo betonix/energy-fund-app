@@ -13,6 +13,16 @@
   "register": {
     "title": "Sign up",
     "titleContent": "Create an account",
-    "titleCaption": "Add your personal details below"
+    "titleCaption": "Add your personal details below",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "password": "Password",
+    "passwordPlaceholder": "Password (Min. 8 characters)",
+    "termsText": "By creating an account your agree \nto our ",
+    "termsLink": "Term and Condtions",
+    "registerButton": "Sign up",
+    "backLogin": "Already have an account?",
+    "backLoginLink": " Log In"
   }
 }

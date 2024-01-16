@@ -86,9 +86,11 @@ const Input: React.FC<CustomInputProps> = ({
           <IconStyled onPress={() => setShowPassword(prev => !prev)}>
             <Icon name="Eyes" width={20} height={20} />
           </IconStyled>
-          <TouchableOpacity>
-            <CaptionPassword>{capitonPassword}</CaptionPassword>
-          </TouchableOpacity>
+          {capitonPassword && (
+            <TouchableOpacity>
+              <CaptionPassword>{capitonPassword}</CaptionPassword>
+            </TouchableOpacity>
+          )}
         </>
       )}
     </Container>
