@@ -27,6 +27,7 @@ export const CheckText = styled.Text`
   font-weight: 800;
   color: ${({theme}) => theme.color.primary};
   margin-top: 1px;
+  font-size: 20px;
 `;
 
 interface Props {
