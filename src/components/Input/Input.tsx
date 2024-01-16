@@ -1,12 +1,26 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import styled from 'styled-components/native';
+import Icon from '../Icon/Icon';
 
 interface CustomInputProps {
   placeholder: string;
   label: string;
   onChangeText: (text: string) => void;
+  type?: 'text' | 'password';
 }
+
+const Container = styled.View`
+  position: relative;
+`;
+
+const IconStyled = styled.TouchableOpacity`
+  position: absolute;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  top: 37px;
+`;
 
 const StyledInput = styled.TextInput`
   border-radius: 15px;
@@ -37,6 +51,7 @@ const Input: React.FC<CustomInputProps> = ({
   placeholder,
   label,
   onChangeText,
+  type = 'text',
 }) => {
   const [inputValue, setInputValue] = useState<string>('');
 
@@ -46,14 +61,19 @@ const Input: React.FC<CustomInputProps> = ({
   };
 
   return (
-    <View>
+    <Container>
       <Label>{label}</Label>
       <StyledInput
         placeholder={placeholder}
         value={inputValue}
         onChangeText={handleInputChange}
       />
-    </View>
+      {type === 'password' && (
+        <IconStyled>
+          <Icon name="Eyes" width={20} height={20} />
+        </IconStyled>
+      )}
+    </Container>
   );
 };
 
