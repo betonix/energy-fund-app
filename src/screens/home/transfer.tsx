@@ -87,7 +87,7 @@ const Transfer: React.FC = () => {
     <Card
       isSelected={item.key === selected}
       onPress={() => setSelected(item.key)}>
-      <Icon name={item.icon} width={28} height={23} />
+      <Icon name={item.icon} width={30} height={23} />
       <TextCard>{item.text}</TextCard>
     </Card>
   );
@@ -219,7 +219,7 @@ const Transfer: React.FC = () => {
                   onPress={() => {
                     updateBalance(parseFloat(accountTransfer.amount));
                     setTimeout(() => {
-                      alert('transfer completed successfully');
+                      alert('Transfer completed successfully');
                       navigation.goBack();
                     }, 1000);
                   }}

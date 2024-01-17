@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   padding: 24px;
+  padding-top: 0px;
   padding-bottom: 0px;
 `;
 
@@ -52,6 +53,7 @@ export const OptionsPayeeWrapper = styled.View`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
+  margin-top: 32px;
 `;
 
 export const TransactionWrapper = styled.View`
@@ -60,7 +62,7 @@ export const TransactionWrapper = styled.View`
 
 export const FlatListWrapper = styled.View`
   height: 125px;
-  margin-bottom: 23px;
+  margin-bottom: 32px;
 `;
 
 export const OptionsPayeeText = styled.Text`

@@ -7,7 +7,7 @@ import Home from '../screens/home/home';
 import Transfer from '../screens/home/transfer';
 import {useAuth} from '../hooks/use-auth/use-auth';
 import theme from '../styles/theme';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Platform, Text, TouchableOpacity, View} from 'react-native';
 import styled from 'styled-components/native';
 import Icon from '../components/Icon/Icon';
 
@@ -17,10 +17,11 @@ const HeaderTransfer = styled.View`
   width: 100%;
   flex-direction: row;
   background-color: white;
-  padding-top: 60px;
+  padding-top: ${Platform.OS == 'ios' ? '60px' : 20};
   align-items: center;
   width: 100%;
   padding-left: 24px;
+  padding-bottom: 16px;
 `;
 
 const HeaderTransferTitle = styled.Text`
@@ -38,12 +39,12 @@ const BackButton = styled.TouchableOpacity``;
 const NavHeader = () => {
   const navigation = useNavigation<any>();
   return (
-    <HeaderTransfer>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
+    <TouchableOpacity onPress={() => navigation.goBack()}>
+      <HeaderTransfer>
         <Icon name="Arrow" width={20} height={20}></Icon>
-      </TouchableOpacity>
-      <HeaderTransferTitle>Send Money</HeaderTransferTitle>
-    </HeaderTransfer>
+        <HeaderTransferTitle>Send Money</HeaderTransferTitle>
+      </HeaderTransfer>
+    </TouchableOpacity>
   );
 };
 
