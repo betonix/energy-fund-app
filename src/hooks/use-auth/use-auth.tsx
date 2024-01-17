@@ -43,7 +43,6 @@ export const useAuth = () => {
     try {
       await new Promise(resolve => setTimeout(resolve, SIMULATION_DELAY));
       await AsyncStorage.setItem(USER_STORAGE_KEY, JSON.stringify(userToSave));
-      setUser(userToSave);
       return {error: null};
     } catch (error) {
       return {error: error as Error};

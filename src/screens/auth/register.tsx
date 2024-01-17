@@ -64,7 +64,7 @@ const CreateAccountLink = styled.Text`
 const Register: React.FC = () => {
   const {t} = useTranslation();
 
-  const {loginUser, register} = useAuth();
+  const {register} = useAuth();
 
   const navigation = useNavigation<any>();
 
@@ -76,6 +76,16 @@ const Register: React.FC = () => {
   });
 
   const [acceptedTerms, setAcceptedTerms] = useState<boolean>(false);
+
+  const doRegister = async () => {
+    const result = await register(user);
+    if (result.error) {
+      alert(result.error);
+    } else {
+      alert('User create with sucess!');
+      navigation.navigate(SCREENS.LOGIN);
+    }
+  };
 
   const TextLink = (
     <TermsText>
@@ -137,7 +147,7 @@ const Register: React.FC = () => {
                     !user.password ||
                     !acceptedTerms
                   }
-                  onPress={() => register(user)}
+                  onPress={() => doRegister()}
                 />
               </ButtonContainer>
             </ContentForm>

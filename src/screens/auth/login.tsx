@@ -17,6 +17,7 @@ import styled from 'styled-components/native';
 import {useNavigation} from '@react-navigation/native';
 import {SCREENS} from '../../navitagion/screens-names';
 import {Keyboard, TouchableWithoutFeedback} from 'react-native';
+import {useAuth} from '../../hooks/use-auth/use-auth';
 
 const ContainerLogo = styled.View`
   margin-bottom: 40px;
@@ -46,9 +47,17 @@ const ButtonContainer = styled.View`
 
 const Login: React.FC = () => {
   const {t} = useTranslation();
+  const {loginUser} = useAuth();
   const navigation = useNavigation<any>();
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
+
+  const doLogin = async () => {
+    const result = await loginUser(emailValue, passwordValue);
+    if (result.error) {
+      alert(result.error);
+    }
+  };
 
   return (
     <KeyboardView behavior="padding">
@@ -81,7 +90,7 @@ const Login: React.FC = () => {
                 <Button
                   title={t('login.loginButton')}
                   disabled={!emailValue || !passwordValue}
-                  onPress={() => {}}
+                  onPress={() => doLogin()}
                 />
               </ButtonContainer>
 
