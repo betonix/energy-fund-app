@@ -6,6 +6,7 @@ import Send from '../../assets/icons/Send.svg';
 import Currency from '../../assets/icons/currency.svg';
 import Water from '../../assets/icons/water.svg';
 import Banana from '../../assets/icons/Banana.svg';
+import Arrow from '../../assets/icons/arrow.svg';
 
 type IconProps = {
   name: string;
@@ -22,6 +23,7 @@ const Icon = ({name, height, width}: IconProps) => {
     Currency: String(Currency),
     Water: String(Water),
     Banana: String(Banana),
+    Arrow: String(Arrow),
   };
 
   type IconOption = keyof typeof icons;
