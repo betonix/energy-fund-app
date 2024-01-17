@@ -12,6 +12,7 @@ import Credit from '../../assets/icons/credit.svg';
 import Person from '../../assets/icons/person.svg';
 import Bank from '../../assets/icons/bank.svg';
 import Add from '../../assets/icons/add.svg';
+import ArrowRight from '../../assets/icons/arrow-right.svg';
 
 type IconProps = {
   name: string;
@@ -34,6 +35,7 @@ const Icon = ({name, height, width}: IconProps) => {
     Person: String(Person),
     Bank: String(Bank),
     Add: String(Add),
+    ArrowRight: String(ArrowRight),
   };
 
   type IconOption = keyof typeof icons;

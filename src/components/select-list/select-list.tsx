@@ -6,6 +6,7 @@ import Icon from '../Icon/Icon';
 interface SelectBoxProps {
   data: {key: string; value: string}[];
   label: string;
+  rightArrow?: boolean;
 }
 
 const StyledSelectList = styled(SelectList)`
@@ -27,7 +28,7 @@ const Label = styled.Text`
   margin-bottom: 8px;
 `;
 
-const SelectBox: React.FC<SelectBoxProps> = ({data, label}) => {
+const SelectBox: React.FC<SelectBoxProps> = ({data, label, rightArrow}) => {
   const [selected, setSelected] = React.useState(data[0].value);
 
   return (
@@ -44,7 +45,13 @@ const SelectBox: React.FC<SelectBoxProps> = ({data, label}) => {
         }}
         searchPlaceholder={''}
         searchicon={<></>}
-        arrowicon={<Icon name="ArrowDown" width={20} height={20} />}
+        arrowicon={
+          rightArrow ? (
+            <Icon name="ArrowRight" width={20} height={20} />
+          ) : (
+            <Icon name="ArrowDown" width={20} height={20} />
+          )
+        }
         data={data}
         save="value"
         defaultOption={data[0]}

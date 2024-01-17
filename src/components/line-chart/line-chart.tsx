@@ -52,7 +52,7 @@ const LineChartGraph = ({onChange = () => {}}) => {
       <LineChart
         data={data}
         onPress={() => console.log('item onPress: ')}
-        height={200}
+        height={100}
         rulesColor="#EBECF1"
         rulesType="dash"
         noOfSections={4}

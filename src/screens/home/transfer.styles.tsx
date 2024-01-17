@@ -60,6 +60,7 @@ export const TransactionWrapper = styled.View`
 
 export const FlatListWrapper = styled.View`
   height: 125px;
+  margin-bottom: 23px;
 `;
 
 export const OptionsPayeeText = styled.Text`
@@ -116,4 +117,19 @@ export const ButtonContainer = styled.View`
   margin-top: 26px;
   margin-bottom: 30px;
   width: 100%;
+`;
+
+export const WrapperSelect = styled.View`
+  margin-bottom: 16px;
+`;
+
+export const ContentList = styled.View`
+  background-color: white;
+  padding: 24px 16px;
+  border-radius: 15px;
+  shadow-color: #000;
+  shadow-offset: 1px 1px;
+  shadow-opacity: 0.1;
+  shadow-radius: 3;
+  elevation: 1;
 `;

@@ -16,6 +16,7 @@ import {
   CardPayee,
   CircleAdd,
   Container,
+  ContentList,
   FlatListWrapper,
   Label,
   OptionsPayeeText,
@@ -24,6 +25,7 @@ import {
   TextCard,
   TextPayee,
   TransactionWrapper,
+  WrapperSelect,
 } from './transfer.styles';
 import Icon from '../../components/Icon/Icon';
 import Input from '../../components/Input/Input';
@@ -39,6 +41,10 @@ const accountData = [
   {key: '3', value: 'VISA **** **** **** 7778'},
   {key: '4', value: 'VISA **** **** **** 5555'},
 ];
+
+const bankList = [{key: '1', value: 'Citibank'}];
+
+const branchList = [{key: '1', value: 'New York'}];
 
 const data = [
   {key: '1', text: 'Transfer via card number', icon: 'Credit'},
@@ -136,74 +142,90 @@ const Transfer: React.FC = () => {
               <OptionsPayeeText color="#989898">Choose payee</OptionsPayeeText>
               <OptionsPayeeText color="#3629B7">Search payee</OptionsPayeeText>
             </OptionsPayeeWrapper>
-            <FlatListWrapper>
-              <FlatList
-                data={dataPayee}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                renderItem={renderPayee}
-                keyExtractor={item => item.key}
-              />
-            </FlatListWrapper>
-            <SelectBox data={accountData} label="Choose bank" />
-            <SelectBox data={accountData} label="Choose bank" />
+          </Container>
+          <FlatListWrapper>
+            <FlatList
+              data={dataPayee}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              renderItem={renderPayee}
+              keyExtractor={item => item.key}
+            />
+          </FlatListWrapper>
+          <Container>
+            <ContentList>
+              <WrapperSelect>
+                <SelectBox
+                  rightArrow={true}
+                  data={bankList}
+                  label="Choose bank"
+                />
+              </WrapperSelect>
+              <WrapperSelect>
+                <SelectBox
+                  rightArrow={true}
+                  data={branchList}
+                  label="Choose branch"
+                />
+              </WrapperSelect>
 
-            <Input
-              label={'Payee name'}
-              value={accountTransfer.name}
-              onChangeText={text =>
-                setAccountTransfer({...accountTransfer, name: text})
-              }
-              placeholder={'Payee name'}
-            />
-            <Input
-              label={'Card number'}
-              type="numeric"
-              onChangeText={text =>
-                setAccountTransfer({...accountTransfer, card: text})
-              }
-              placeholder={'Card number'}
-            />
-            <Input
-              label={'Amount'}
-              type="numeric"
-              onChangeText={text =>
-                setAccountTransfer({...accountTransfer, amount: text})
-              }
-              placeholder={'Amount'}
-            />
-            <Input
-              label={'Reference'}
-              onChangeText={text =>
-                setAccountTransfer({...accountTransfer, reference: text})
-              }
-              placeholder={'Reference'}
-            />
-
-            <Checkbox
-              isSelected={savePayee}
-              onPress={() => setSavePayee(prev => !prev)}
-              text={<SavePayeText>Save Payee details </SavePayeText>}
-            />
-            <ButtonContainer>
-              <Button
-                title="Confirm"
-                disabled={
-                  !selected ||
-                  !accountTransfer.name ||
-                  !accountTransfer.amount ||
-                  !accountTransfer.card ||
-                  !(parseFloat(accountTransfer.amount) < balance)
+              <Input
+                label={'Payee name'}
+                value={accountTransfer.name}
+                onChangeText={text =>
+                  setAccountTransfer({...accountTransfer, name: text})
                 }
-                onPress={() => {
-                  updateBalance(parseFloat(accountTransfer.amount));
-                  setTimeout(() => {
-                    alert('transfer completed successfully');
-                    navigation.goBack();
-                  }, 1000);
-                }}
+                placeholder={'Payee name'}
               />
-            </ButtonContainer>
+              <Input
+                label={'Card number'}
+                type="numeric"
+                onChangeText={text =>
+                  setAccountTransfer({...accountTransfer, card: text})
+                }
+                placeholder={'Card number'}
+              />
+              <Input
+                label={'Amount'}
+                type="numeric"
+                onChangeText={text =>
+                  setAccountTransfer({...accountTransfer, amount: text})
+                }
+                placeholder={'Amount'}
+              />
+              <Input
+                label={'Reference'}
+                onChangeText={text =>
+                  setAccountTransfer({...accountTransfer, reference: text})
+                }
+                placeholder={'Reference'}
+              />
+
+              <Checkbox
+                isSelected={savePayee}
+                onPress={() => setSavePayee(prev => !prev)}
+                text={<SavePayeText>Save Payee details </SavePayeText>}
+              />
+              <ButtonContainer>
+                <Button
+                  title="Confirm"
+                  disabled={
+                    !selected ||
+                    !accountTransfer.name ||
+                    !accountTransfer.amount ||
+                    !accountTransfer.card ||
+                    !(parseFloat(accountTransfer.amount) < balance)
+                  }
+                  onPress={() => {
+                    updateBalance(parseFloat(accountTransfer.amount));
+                    setTimeout(() => {
+                      alert('transfer completed successfully');
+                      navigation.goBack();
+                    }, 1000);
+                  }}
+                />
+              </ButtonContainer>
+            </ContentList>
           </Container>
         </ScrollView>
       </TouchableWithoutFeedback>
