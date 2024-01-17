@@ -2,19 +2,20 @@ import React from 'react';
 
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   flex-direction: row;
+  align-items: center;
+  align-items: center;
 `;
 
-export const CheckboxContainer = styled.TouchableOpacity`
+export const CheckboxContainer = styled.View`
   align-items: center;
+  justify-content: center;
   width: 24px;
   height: 24px;
   border-width: 2px;
   border-radius: 2px;
   border-color: ${({theme}) => theme.color.primary};
-  gap: 4px;
-  margin-top: 4px;
 `;
 
 export const ItemText = styled.View`
@@ -26,8 +27,8 @@ export const ItemText = styled.View`
 export const CheckText = styled.Text`
   font-weight: 800;
   color: ${({theme}) => theme.color.primary};
-  margin-top: -1px;
-  font-size: 20px;
+  font-size: 18px;
+  top: -2px;
 `;
 
 interface Props {
@@ -38,8 +39,8 @@ interface Props {
 
 const Checkbox = ({text, isSelected, onPress}: Props) => {
   return (
-    <Container>
-      <CheckboxContainer onPress={onPress}>
+    <Container onPress={onPress}>
+      <CheckboxContainer>
         {isSelected ? <CheckText>✓</CheckText> : null}
       </CheckboxContainer>
       <ItemText>{text}</ItemText>
