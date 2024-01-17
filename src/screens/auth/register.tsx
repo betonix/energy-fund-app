@@ -96,23 +96,27 @@ const Register: React.FC = () => {
               <Input
                 label={t('register.firstName')}
                 onChangeText={text => setUser({...user, firstName: text})}
+                value={user.firstName}
                 placeholder={t('register.firstName')}
               />
 
               <Input
                 label={t('register.lastName')}
+                value={user.lastName}
                 onChangeText={text => setUser({...user, lastName: text})}
                 placeholder={t('register.lastName')}
               />
 
               <Input
                 label={t('register.email')}
+                value={user.email}
                 onChangeText={text => setUser({...user, email: text})}
                 placeholder={t('register.email')}
               />
 
               <Input
                 label={t('register.password')}
+                value={user.password}
                 type="password"
                 onChangeText={text => setUser({...user, password: text})}
                 placeholder={t('register.passwordPlaceholder')}

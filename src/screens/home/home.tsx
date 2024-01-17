@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {ScrollView, Text} from 'react-native';
+import React, {useContext, useState} from 'react';
+import {ScrollView} from 'react-native';
 import {
   BalanceText,
   ButtonSendMoney,
@@ -20,6 +20,7 @@ import styled from 'styled-components/native';
 import LineChartGraph from '../../components/line-chart/line-chart';
 import {useNavigation} from '@react-navigation/native';
 import {SCREENS} from '../../navitagion/screens-names';
+import {AccountContext} from '../../context/account/account-provider';
 
 const BadgeOneCard = styled.View`
   border-radius: 10px;
@@ -190,8 +191,9 @@ const ItemExtract: React.FC<ItemExtractType> = ({title, data}) => {
 };
 
 const Home: React.FC = () => {
-  const [balance, setBalance] = useState();
+  const [balanceChart, setBalanceChart] = useState();
   const navigation = useNavigation<any>();
+  const {balance} = useContext(AccountContext);
 
   const dataToday = [
     {
@@ -224,7 +226,7 @@ const Home: React.FC = () => {
     <ScrollView>
       <Container>
         <TitlePage>Current account</TitlePage>
-        <BalanceText>$3469.52</BalanceText>
+        <BalanceText>${balance}</BalanceText>
         <ContentPage>
           <WrapperCard>
             <ContainerCard>
@@ -252,11 +254,11 @@ const Home: React.FC = () => {
             <CaptionDate>20 Jan 24</CaptionDate>
           </ContainerChart>
           <ContainerBalance>
-            <BalanceChart>{balance}</BalanceChart>
+            <BalanceChart>{balanceChart}</BalanceChart>
             <Currency>USD</Currency>
           </ContainerBalance>
 
-          <LineChartGraph onChange={value => setBalance(value)} />
+          <LineChartGraph onChange={value => setBalanceChart(value)} />
           <ContainerExtract>
             {ItemExtract({
               title: 'Today',

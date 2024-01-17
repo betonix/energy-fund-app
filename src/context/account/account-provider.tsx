@@ -3,16 +3,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export type AccountContextType = {
   balance: number;
-  updateBalance: (newBalance: number) => void;
+  updateBalance: (debite: number) => void;
 };
 
 export const AccountContext = createContext<AccountContextType>({
-  balance: 0,
+  balance: 3469.52,
   updateBalance: () => null,
 });
 
 export const AccountProvider = ({children}: {children: ReactNode}) => {
-  const [balance, setBalance] = useState<number>(0);
+  const [balance, setBalance] = useState<number>(3469.52);
 
   useEffect(() => {
     const loadBalance = async () => {
@@ -29,9 +29,10 @@ export const AccountProvider = ({children}: {children: ReactNode}) => {
     loadBalance();
   }, []);
 
-  const updateBalance = (newBalance: number) => {
-    setBalance(newBalance);
-    AsyncStorage.setItem('balance', newBalance.toString());
+  const updateBalance = (debite: number) => {
+    console.log(balance - debite);
+    setBalance(balance - debite);
+    AsyncStorage.setItem('balance', (balance - debite).toString());
   };
 
   return (

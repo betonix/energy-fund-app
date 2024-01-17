@@ -1,13 +1,10 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   FlatList,
   Image,
   Keyboard,
-  Platform,
   ScrollView,
-  Text,
   TouchableWithoutFeedback,
-  View,
 } from 'react-native';
 import {SelectList} from 'react-native-dropdown-select-list';
 import SelectBox from '../../components/select-list/select-list';
@@ -29,11 +26,12 @@ import {
   TransactionWrapper,
 } from './transfer.styles';
 import Icon from '../../components/Icon/Icon';
-import {Circle} from 'react-native-svg';
 import Input from '../../components/Input/Input';
 import Button from '../../components/button/button';
 import {KeyboardView} from '../auth/auth.styles';
 import Checkbox from '../../components/checkbox/checkbox';
+import {AccountContext} from '../../context/account/account-provider';
+import {useNavigation} from '@react-navigation/native';
 
 const accountData = [
   {key: '1', value: 'VISA **** **** **** 1234'},
@@ -67,6 +65,10 @@ const dataPayee = [
 ];
 
 const Transfer: React.FC = () => {
+  const navigation = useNavigation<any>();
+
+  const {balance, updateBalance} = useContext(AccountContext);
+
   const [selected, setSelected] = useState('');
 
   const [paySelected, setPaySelected] = useState('');
@@ -116,7 +118,7 @@ const Transfer: React.FC = () => {
         <ScrollView>
           <Container>
             <SelectBox data={accountData} label="Choose account/ card" />
-            <CaptionBalance>Available balance : $3469.52</CaptionBalance>
+            <CaptionBalance>Available balance : ${balance}</CaptionBalance>
             <Label>Choose transaction</Label>
           </Container>
           <TransactionWrapper>
@@ -190,9 +192,16 @@ const Transfer: React.FC = () => {
                   !selected ||
                   !accountTransfer.name ||
                   !accountTransfer.amount ||
-                  !accountTransfer.card
+                  !accountTransfer.card ||
+                  !(parseFloat(accountTransfer.amount) < balance)
                 }
-                onPress={() => {}}
+                onPress={() => {
+                  updateBalance(parseFloat(accountTransfer.amount));
+                  setTimeout(() => {
+                    alert('transfer completed successfully');
+                    navigation.goBack();
+                  }, 1000);
+                }}
               />
             </ButtonContainer>
           </Container>

@@ -74,11 +74,8 @@ const Input: React.FC<CustomInputProps> = ({
   }, [value]);
 
   const handleInputChange = (text: string) => {
-    const value = text.replace(/[- #*;,.<>\{\}\[\]\\\/]/gi, '');
-    if (/^\d+$/.test(text.toString())) {
-      setInputValue(value);
-      onChangeText(value);
-    }
+    setInputValue(text);
+    onChangeText(text);
   };
 
   return (
