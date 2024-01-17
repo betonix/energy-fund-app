@@ -57,7 +57,6 @@ const CaptionMoney = styled.Text`
   font-size: 12px;
   font-style: normal;
   font-weight: 600;
-  line-height: 16px;
 `;
 
 const CaptionDate = styled.Text`
@@ -73,7 +72,6 @@ const ContainerChart = styled.View`
   margin-top: 46px;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 8px;
 `;
 
 const BalanceChart = styled.Text`
@@ -82,8 +80,8 @@ const BalanceChart = styled.Text`
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
-  line-height: 28px;
-  margin-bottom: 8px;
+  margin-top: 8px;
+  height: 40px;
 `;
 
 const Currency = styled.Text`
@@ -93,6 +91,7 @@ const Currency = styled.Text`
   font-style: normal;
   font-weight: 600;
   line-height: 16px;
+  margin-left: 4px;
 `;
 
 const ContainerExtract = styled.View`
@@ -145,6 +144,11 @@ const ContainerIcon = styled.View`
   align-items: center;
   justify-content: center;
   margin-right: 12px;
+`;
+
+const ContainerBalance = styled.View`
+  flex-direction: row;
+  align-items: center;
 `;
 
 const Wrapper = styled.View`
@@ -243,9 +247,11 @@ const Home: React.FC = () => {
             <CaptionMoney>Insights</CaptionMoney>
             <CaptionDate>20 Jan 24</CaptionDate>
           </ContainerChart>
-          <BalanceChart>
-            {balance} <Currency>USD</Currency>
-          </BalanceChart>
+          <ContainerBalance>
+            <BalanceChart>{balance}</BalanceChart>
+            <Currency>USD</Currency>
+          </ContainerBalance>
+
           <LineChartGraph onChange={value => setBalance(value)} />
           <ContainerExtract>
             {ItemExtract({

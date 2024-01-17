@@ -74,7 +74,6 @@ export const UserName = styled.Text`
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
   z-index: 1;
 `;
 
