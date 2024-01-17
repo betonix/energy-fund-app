@@ -9,13 +9,13 @@
 Here's a sneak peek at the Renewable Energy Fund App in action:
 
 - **Sign Up and Login:**
-  ![GIF1](link_to_gif1.gif)
+  ![](https://github.com/betonix/energy-fund-app/blob/main/gifs/gif1.gif)
 
 - **Dashboard and Chart Interaction:**
-  ![GIF2](link_to_gif2.gif)
+  ![](https://github.com/betonix/energy-fund-app/blob/main/gifs/gif2.gif)
 
 - **Easy Money Transfer:**
-  ![GIF3](link_to_gif3.gif)
+  ![](https://github.com/betonix/energy-fund-app/blob/main/gifs/gif1.gif)
 
 ## Features
 
