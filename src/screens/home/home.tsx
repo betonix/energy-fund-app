@@ -18,6 +18,8 @@ import {
 import Icon from '../../components/Icon/Icon';
 import styled from 'styled-components/native';
 import LineChartGraph from '../../components/line-chart/line-chart';
+import {useNavigation} from '@react-navigation/native';
+import {SCREENS} from '../../navitagion/screens-names';
 
 const BadgeOneCard = styled.View`
   border-radius: 10px;
@@ -189,6 +191,7 @@ const ItemExtract: React.FC<ItemExtractType> = ({title, data}) => {
 
 const Home: React.FC = () => {
   const [balance, setBalance] = useState();
+  const navigation = useNavigation<any>();
 
   const dataToday = [
     {
@@ -239,7 +242,8 @@ const Home: React.FC = () => {
               </CreditCard>
             </ContainerCard>
           </WrapperCard>
-          <ButtonSendMoney>
+          <ButtonSendMoney
+            onPress={() => navigation.navigate(SCREENS.TRANSFER)}>
             <Icon name="Send" width={20} height={20}></Icon>
             <TextSendMoney>Send money</TextSendMoney>
           </ButtonSendMoney>

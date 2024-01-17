@@ -1,0 +1,31 @@
+<svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="28" height="24" fill="#F5F5F5"/>
+<g id="Send Money" clip-path="url(#clip0_1_2)">
+<rect width="375" height="1303" transform="translate(-15 -297)" fill="white"/>
+<g id="Card / 3">
+<g id="Rectangle 411" filter="url(#filter0_d_1_2)">
+<rect x="-16" y="-18" width="120" height="100" rx="15" fill="#E0E0E0"/>
+</g>
+<g id="Icon / Category / icons/credit-card 2">
+<g id="Group">
+<path id="Vector" d="M28 7.33218V2.66668C28 1.37751 26.9558 0.333344 25.6667 0.333344H2.33333C1.04417 0.333344 0 1.37751 0 2.66668V7.33218H28V7.33218Z" fill="white"/>
+<path id="Vector_2" d="M0 10.8333V21.3333C0 22.6225 1.04417 23.6667 2.33333 23.6667H25.6667C26.9558 23.6667 28 22.6225 28 21.3333V10.8333H0ZM12.8333 17.8333H4.66667V15.5H12.8333V17.8333ZM23.3333 17.8333H18.6667V15.5H23.3333V17.8333Z" fill="white"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_1_2" x="-46" y="-43" width="180" height="160" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="5"/>
+<feGaussianBlur stdDeviation="15"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_2"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_2" result="shape"/>
+</filter>
+<clipPath id="clip0_1_2">
+<rect width="375" height="1303" fill="white" transform="translate(-15 -297)"/>
+</clipPath>
+</defs>
+</svg>

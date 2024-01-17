@@ -1,14 +1,15 @@
-import React, {useState} from 'react';
-import {TouchableOpacity, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {KeyboardTypeOptions, TouchableOpacity, View} from 'react-native';
 import styled from 'styled-components/native';
 import Icon from '../Icon/Icon';
 
 interface CustomInputProps {
   placeholder: string;
   label: string;
-  onChangeText: (text: string) => void;
-  type?: 'text' | 'password';
+  onChangeText: (text) => void;
+  type?: string;
   capitonPassword?: string;
+  value?: string;
 }
 
 const Container = styled.View`
@@ -61,15 +62,23 @@ const Input: React.FC<CustomInputProps> = ({
   placeholder,
   label,
   onChangeText,
-  type = 'text',
+  type = 'default',
   capitonPassword,
+  value,
 }) => {
-  const [inputValue, setInputValue] = useState<string>('');
+  const [inputValue, setInputValue] = useState(value);
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
+  useEffect(() => {
+    setInputValue(value);
+  }, [value]);
+
   const handleInputChange = (text: string) => {
-    setInputValue(text);
-    onChangeText(text);
+    const value = text.replace(/[- #*;,.<>\{\}\[\]\\\/]/gi, '');
+    if (/^\d+$/.test(text.toString())) {
+      setInputValue(value);
+      onChangeText(value);
+    }
   };
 
   return (
@@ -78,6 +87,7 @@ const Input: React.FC<CustomInputProps> = ({
       <StyledInput
         secureTextEntry={type == 'password' && !showPassword}
         placeholder={placeholder}
+        keyboardType={type}
         value={inputValue}
         onChangeText={handleInputChange}
       />
